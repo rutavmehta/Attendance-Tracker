@@ -477,9 +477,48 @@ a:hover {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #2c5aa0 100%);
-  padding: var(--space-20);
+  background: linear-gradient(120deg, #20203a 0%, #2f1338 100%);
 }
+
+
+
+  
+.login-card {
+  width: 100%;
+  max-width: 390px;
+  padding: 36px 28px 30px 28px;
+  background: rgba(34, 17, 47, 0.86);  /* Glassy dark with subtle purple tint */
+  border-radius: 20px;
+  box-shadow: 0 12px 48px 0 rgba(90, 60, 110, 0.25),
+              0 2.5px 12px 0 rgba(255,183,213,0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.19);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  color: #fff;
+}
+
+
+  
+.login-card:hover, .login-card:focus-within {
+    box-shadow: 0 12px 48px rgba(60, 72, 89, 0.13), 0 3px 8px rgba(33, 128, 141, 0.08);
+}
+
+.login-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: 0.8px;
+  text-align: center;
+  text-shadow: 0 4px 14px rgba(185, 119, 250, 0.22),
+               0 1px 2px rgba(0,0,0,0.18);
+}
+
+.login-subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-24);
+}
+
 
 .login-card {
   width: 100%;
@@ -488,10 +527,16 @@ a:hover {
 }
 
 .login-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #fff; /* White color for the title */
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
   text-align: center;
-  margin-bottom: var(--space-8);
-  color: var(--color-text);
+  background: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.18); /* Optional: subtle glow for visibility */
 }
+
 
 .login-subtitle {
   text-align: center;
@@ -499,25 +544,103 @@ a:hover {
   margin-bottom: var(--space-32);
 }
 
-.login-form,
-.register-form {
-  margin-bottom: var(--space-20);
+.form-group {
+  margin-bottom: 22px;
 }
 
-.login-divider {
+.form-label {
+  display: block;
+  color: #fde7fa;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  letter-spacing: 0.12px;
+}
+
+/* Styled Inputs for dark card */
+.form-control {
+  width: 100%;
+  padding: 13px 15px;
+  font-size: 1rem;
+  color: #fee6ff;
+  background: rgba(40, 15, 55, 0.53);
+  border: 2px solid #b977fa;
+  border-radius: 8px;
+  transition: border 0.2s, background 0.2s, color 0.2s;
+  outline: none;
+  margin-bottom: 3px;
+  box-shadow: 0 1.5px 6px rgba(185, 119, 250, 0.12);
+}
+.form-control:focus {
+  border-color: #ffb7d5;
+  background: rgba(60, 18, 80, 0.67);
+  color: #fff;
+}
+
+/* Main Button (gradient accent) */
+.btn-main {
+  width: 100%;
+  padding: 13px 0;
+  background: linear-gradient(100deg,#b977fa 60%,#ffb7d5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  box-shadow: 0 2.5px 10px rgba(185,119,250,0.08);
+  cursor: pointer;
+  margin-top: 10px;
+  letter-spacing: 0.15px;
+  transition: background 0.19s, color 0.17s;
+}
+.btn-main:hover {
+  background: linear-gradient(100deg,#ffb7d5 25%, #b977fa 100%);
+  color: #24153c;
+}
+
+/* Create New Account button (white, interactive) */
+.btn-secondary,
+.btn-create-account {
+  width: 100%;
+  padding: 13px 0;
+  background: #fff;
+  color: #b977fa;
+  border: 1.5px solid #b977fa;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 10px;
+  letter-spacing: 0.15px;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.btn-secondary:hover,
+.btn-create-account:hover {
+  background: #fde7fa;
+  border-color: #ffb7d5;
+  color: #9636af;
+}
+
+.divider {
   text-align: center;
-  margin: var(--space-20) 0;
+  margin: 20px 0 10px 0;
+  color: #ffd7fd;
+  font-weight: 700;
+  font-size: 1.07rem;
+  letter-spacing: 0.08em;
   position: relative;
 }
 
-.login-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--color-border);
+.divider::before,
+.divider::after {
+  content: "";
+  display: inline-block;
+  width: 30%;
+  height: 1.5px;
+  background: linear-gradient(90deg, #ffd7fd 0%, #b977fa 100%);
+  vertical-align: middle;
+  margin: 0 7px;
+  border-radius: 3px;
 }
 
 .login-divider span {
@@ -1266,7 +1389,7 @@ a:hover {
   visibility: hidden !important;
   height: 0 !important;
   padding: 0 !important;
-  margin: 0 !important;
+  margin: 0 !important;j
 }
 /* History Table - Minimal, as only absentees are shown now */
 .absent-rolls-list {
@@ -1281,4 +1404,3 @@ a:hover {
   font-weight: bold;
   color: var(--color-error);
 }
-
