@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Login/Register Screen -->
+  <div id="loginScreen" class="screen active">
+    <div class="login-container">
+      <div class="login-card card">
+        <div class="card__body">
+          <h1 class="login-title">Student Attendance Tracker</h1>
+          <form id="loginForm" class="login-form">
+            <div class="form-group">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+          </form>
+          <div class="login-divider"><span>or</span></div>
+          <form id="registerForm" class="register-form hidden">
+            <div class="form-group">
+              <label for="regName" class="form-label">Full Name</label>
+              <input type="text" id="regName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="regUsername" class="form-label">Username</label>
+              <input type="text" id="regUsername" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="regPassword" class="form-label">Password</label>
+              <input type="password" id="regPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full-width">Register</button>
+          </form>
+          <button id="toggleAuth" class="btn btn--outline btn--full-width">
+            Create New Account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Screen -->
+  <div id="dashboardScreen" class="screen">
+    <div class="dashboard-container container">
+      <header class="dashboard-header">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="dashboard-title">Welcome back, <span id="teacherName"></span></h1>
+            <p class="dashboard-subtitle">Manage your classes and track attendance</p>
+          </div>
+          <button id="logoutBtn" class="btn btn--outline">Logout</button>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-actions">
+          <button id="addClassBtn" class="btn btn--primary">
+            <span class="btn-icon">+</span>
+            Add New Class
+          </button>
+          <button id="defaulterBtn" class="btn btn--secondary">
+            <span class="btn-icon">⚠</span>
+            View Defaulters
+          </button>
+        </div>
+        <div class="classes-grid" id="classesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Defaulter Panel Screen -->
+  <div id="defaulterScreen" class="screen">
+    <div class="defaulter-container container">
+      <header class="screen-header">
+        <button id="backToDashboardFromDefaulter" class="btn btn--outline">← Back to Dashboard</button>
+        <h1>Defaulter Analysis</h1>
+      </header>
+      <div class="defaulter-content">
+        <div class="upload-multiple-section card">
+          <div class="card__body">
+            <h2>Upload Multiple Attendance Files</h2>
+            <p class="text-secondary">Upload Excel files with attendance data to calculate defaulters (below 80%)</p>
+            <div class="upload-area" id="uploadMultipleArea">
+              <div class="upload-icon">📁</div>
+              <p>Click to upload Excel files or drag and drop multiple files</p>
+              <input type="file" id="multipleFileInput" accept=".xlsx,.xls" multiple hidden>
+            </div>
+            <div id="uploadedFilesList" class="uploaded-files-list"></div>
+            <button id="analyzeDefaultersBtn" class="btn btn--primary" disabled>Analyze Defaulters</button>
+          </div>
+        </div>
+        <div class="defaulter-results card hidden" id="defaulterResults">
+          <div class="card__body">
+            <h2>Defaulter Analysis Results</h2>
+            <div id="defaulterSummary" class="defaulter-summary"></div>
+            <div id="defaulterList" class="defaulter-list"></div>
+            <div class="defaulter-actions">
+              <button id="downloadDefaultersBtn" class="btn btn--outline">Download Defaulters Report</button>
+              <button id="clearAnalysisBtn" class="btn btn--secondary">Clear Analysis</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Class Screen -->
+  <div id="addClassScreen" class="screen">
+    <div class="add-class-container container">
+      <header class="screen-header">
+        <button id="backToDashboard" class="btn btn--outline">← Back to Dashboard</button>
+        <h1>Add New Class</h1>
+      </header>
+      <div class="add-class-content">
+        <div class="upload-section card">
+          <div class="card__body">
+            <h2>Upload Student List</h2>
+            <p class="text-secondary">Upload an Excel file containing student roll numbers and names</p>
+            <div class="upload-area" id="uploadArea">
+              <div class="upload-icon">📁</div>
+              <p>Click to upload Excel file or drag and drop</p>
+              <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="preview-section card hidden" id="previewSection">
+          <div class="card__body">
+            <h2>Preview</h2>
+            <div id="previewContent"></div>
+            <div class="preview-actions">
+              <button id="confirmCreateBtn" class="btn btn--primary">Confirm & Create Class</button>
+              <button id="cancelPreviewBtn" class="btn btn--outline">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ... (no changes above this line) ... -->
+
+<!-- Attendance Screen -->
+<div id="attendanceScreen" class="screen">
+  <div class="attendance-container container">
+    <header class="screen-header">
+      <button id="backToDashboardFromAttendance" class="btn btn--outline">← Back to Dashboard</button>
+      <h1 id="className">Class Attendance</h1>
+    </header>
+    <div class="attendance-content">
+      <div class="attendance-form card">
+        <div class="card__body">
+          <h2>Mark Attendance</h2>
+          <div class="form-group">
+            <label for="attendanceDate" class="form-label">Date</label>
+            <input type="date" id="attendanceDate" class="form-control" required>
+          </div>
+          <!-- Attendance Input Section -->
+          <div class="attendance-input-section">
+            <div class="form-group">
+              <label for="absentRollsInput" class="form-label">Enter roll numbers of absent students (comma-separated):</label>
+              <input type="text" id="absentRollsInput" class="form-control" placeholder="e.g., 101, 105, 110">
+              <small class="form-text text-muted">Leave empty if all students are present</small>
+            </div>
+          </div>
+          <!-- Updated Preview: Only summary, no student list -->
+          <div id="attendancePreview" class="attendance-preview"></div>
+          <div class="attendance-actions">
+            <button id="saveAttendanceBtn" class="btn btn--primary">Save Attendance</button>
+            <button id="attendanceHistoryBtn" class="btn btn--outline">View History</button>
+            <button id="downloadAttendanceBtn" class="btn btn--secondary">Download Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ... (no changes below this line) ... -->
+
+
+  <!-- Attendance History Modal - FIXED: Added hidden class and proper structure -->
+  <div id="attendanceHistoryModal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Attendance History</h2>
+        <button id="closeHistoryBtn" class="btn btn--outline">Close</button>
+      </div>
+      <div id="historyContent" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="messageContainer" class="message-container"></div>
+
+  <!-- Supabase & SheetJS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
