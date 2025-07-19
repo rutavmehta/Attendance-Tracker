@@ -1420,6 +1420,7 @@ a:hover {
   background: none;
   pointer-events: none;
   user-select: none;
+  white-space: nowrap;
 }
 .app-credits-right-vertical span {
   display: block;
