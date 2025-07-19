@@ -1410,14 +1410,14 @@ a:hover {
   bottom: 40px;
   z-index: 100;
   text-align: right;
-  color: #ded8ef;
+  color: #ffffff;
   font-family: 'Segoe UI', Arial, sans-serif;
   font-size: 0.98rem;
   font-weight: 300;
   letter-spacing: 0.01em;
   opacity: 0.68;
   line-height: 1.6;
-  background: none;
+  background: transparent;
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
@@ -1429,6 +1429,7 @@ a:hover {
     margin-top: 20px;
     white-space: normal;
     display: block;
+    background: transparent
   }
 }
 .app-credits-right-vertical span {
