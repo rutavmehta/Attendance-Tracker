@@ -8,49 +8,28 @@
 </head>
 <body>
   <!-- Login/Register Screen -->
-  <div id="loginScreen" class="screen active login-container">
-    <div class="login-card">
-      <h1 class="login-title">STUDENT ATTENDANCE TRACKER</h1>
-      
-      <!-- Login Form -->
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
-        </div>
-        <div class="form-group">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn-main">Sign In</button>
-        <div class="divider">or</div>
-        <button type="button" id="toggleAuth" class="btn-secondary btn-create-account">Create New Account</button>
-      </form>
-
-      <!-- Register Form -->
-      <form id="registerForm" class="hidden">
-        <div class="form-group">
-          <label for="regName" class="form-label">Full Name</label>
-          <input type="text" id="regName" class="form-control" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-          <label for="regUsername" class="form-label">Username</label>
-          <input type="text" id="regUsername" class="form-control" placeholder="Choose a username" required>
-        </div>
-        <div class="form-group">
-          <label for="regPassword" class="form-label">Password</label>
-          <input type="password" id="regPassword" class="form-control" placeholder="Choose a password" required>
-        </div>
-        <button type="submit" class="btn-main">Create Account</button>
-        <div class="divider">or</div>
-        <button type="button" id="toggleAuth2" class="btn-secondary">Back to Login</button>
-      </form>
-    </div>
+ <div class="login-container">
+  <div class="login-card">
+    <h1 class="login-title">STUDENT ATTENDANCE TRACKER</h1>
+    <form>
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+      </div>
+      <button type="submit" class="btn-main">Sign In</button>
+      <div class="divider">or</div>
+      <button type="button" class="btn-secondary btn-create-account">Create New Account</button>
+    </form>
   </div>
+</div>
+<div class="app-credits-right-vertical">
+  <span>~ APP MADE BY | Anushka Wani | Shriya Sabnis | Rutav Mehta</span>
+</div>
 
-  <div class="app-credits-right-vertical">
-    <span>~ APP MADE BY | Anushka Wani | Shriya Sabnis | Rutav Mehta</span>
-  </div>
 
   <!-- Dashboard Screen -->
   <div id="dashboardScreen" class="screen">
@@ -149,43 +128,48 @@
     </div>
   </div>
 
-  <!-- Attendance Screen -->
-  <div id="attendanceScreen" class="screen">
-    <div class="attendance-container container">
-      <header class="screen-header">
-        <button id="backToDashboardFromAttendance" class="btn btn--outline">← Back to Dashboard</button>
-        <h1 id="className">Class Attendance</h1>
-      </header>
-      <div class="attendance-content">
-        <div class="attendance-form card">
-          <div class="card__body">
-            <h2>Mark Attendance</h2>
+<!-- ... (no changes above this line) ... -->
+
+<!-- Attendance Screen -->
+<div id="attendanceScreen" class="screen">
+  <div class="attendance-container container">
+    <header class="screen-header">
+      <button id="backToDashboardFromAttendance" class="btn btn--outline">← Back to Dashboard</button>
+      <h1 id="className">Class Attendance</h1>
+    </header>
+    <div class="attendance-content">
+      <div class="attendance-form card">
+        <div class="card__body">
+          <h2>Mark Attendance</h2>
+          <div class="form-group">
+            <label for="attendanceDate" class="form-label">Date</label>
+            <input type="date" id="attendanceDate" class="form-control" required>
+          </div>
+          <!-- Attendance Input Section -->
+          <div class="attendance-input-section">
             <div class="form-group">
-              <label for="attendanceDate" class="form-label">Date</label>
-              <input type="date" id="attendanceDate" class="form-control" required>
+              <label for="absentRollsInput" class="form-label">Enter roll numbers of absent students (comma-separated):</label>
+              <input type="text" id="absentRollsInput" class="form-control" placeholder="e.g., 101, 105, 110">
+              <small class="form-text text-muted">Leave empty if all students are present</small>
             </div>
-            <!-- Attendance Input Section -->
-            <div class="attendance-input-section">
-              <div class="form-group">
-                <label for="absentRollsInput" class="form-label">Enter roll numbers of absent students (comma-separated):</label>
-                <input type="text" id="absentRollsInput" class="form-control" placeholder="e.g., 101, 105, 110">
-                <small class="form-text text-muted">Leave empty if all students are present</small>
-              </div>
-            </div>
-            <!-- Updated Preview: Only summary, no student list -->
-            <div id="attendancePreview" class="attendance-preview"></div>
-            <div class="attendance-actions">
-              <button id="saveAttendanceBtn" class="btn btn--primary">Save Attendance</button>
-              <button id="attendanceHistoryBtn" class="btn btn--outline">View History</button>
-              <button id="downloadAttendanceBtn" class="btn btn--secondary">Download Report</button>
-            </div>
+          </div>
+          <!-- Updated Preview: Only summary, no student list -->
+          <div id="attendancePreview" class="attendance-preview"></div>
+          <div class="attendance-actions">
+            <button id="saveAttendanceBtn" class="btn btn--primary">Save Attendance</button>
+            <button id="attendanceHistoryBtn" class="btn btn--outline">View History</button>
+            <button id="downloadAttendanceBtn" class="btn btn--secondary">Download Report</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Attendance History Modal -->
+<!-- ... (no changes below this line) ... -->
+
+
+  <!-- Attendance History Modal - FIXED: Added hidden class and proper structure -->
   <div id="attendanceHistoryModal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -204,6 +188,5 @@
   <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="env.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
