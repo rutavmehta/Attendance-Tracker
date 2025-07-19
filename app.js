@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
     
     function showMessage(text, type = "success", timeout = 3000) {
       const msg = document.createElement("div");
-      msg.className = `message ${type}`;
+      msg.className = message ${type};
       msg.textContent = text;
       msg.style.cssText = `
         position: fixed;
@@ -531,12 +531,12 @@ downloadDefaultersBtn.addEventListener("click", () => {
     const day = String(d.getDate()).padStart(2, "0");
     const month = String(d.getMonth() + 1).padStart(2, "0");
     const year = d.getFullYear();
-    return ${day}_${month}_${year};
+    return ${day}${month}${year};
   }
 
   const lastDateFormatted = prettyDate(lastDateRaw);
   const exportBase = (fileBaseName || "Defaulter_Report").replace(/[\\/:*?"<>|]/g, "_");
-  const fileName = ${exportBase}_Defaulter_list_Till_${lastDateFormatted}.xlsx;
+  const fileName = ${exportBase}Defaulter_list_Till${lastDateFormatted}.xlsx;
 
   const header = ["Roll Number", "Name", "Present Days", "Total Days", "Attendance %", "Status"];
   const data = [header];
