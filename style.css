@@ -1422,6 +1422,15 @@ a:hover {
   user-select: none;
   white-space: nowrap;
 }
+@media (max-width: 600px) {
+  .app-credits-right-vertical {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+    white-space: normal;
+    display: block;
+  }
+}
 .app-credits-right-vertical span {
   display: block;
   font-weight: 300;
