@@ -1,3 +1,2 @@
-// env.js
-window.SUPABASE_URL = "{{ process.env.SUPABASE_URL }}";
-window.SUPABASE_ANON_KEY = "{{ process.env.SUPABASE_ANON_KEY }}";
+window.SUPABASE_URL = "https://ktczjtoavbkxeibuukzu.supabase.co";
+window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0Y3pqdG9hdmJreGVpYnV1a3p1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MTI0NDQsImV4cCI6MjA2ODM4ODQ0NH0.gNgwnNDKgaCZH6aF1Z-Lxs03l-CVK3oIrKigM1zTH2E";
