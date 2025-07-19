@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
     
     function showMessage(text, type = "success", timeout = 3000) {
       const msg = document.createElement("div");
-      msg.className = message ${type};
+      msg.className = `message ${type}`;
       msg.textContent = text;
       msg.style.cssText = `
         position: fixed;
