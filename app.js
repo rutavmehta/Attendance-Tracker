@@ -1,8 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Initialize Supabase - REPLACE WITH YOUR ACTUAL CREDENTIALS
-  const SUPABASE_URL = "https://ktczjtoavbkxeibuukzu.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0Y3pqdG9hdmJreGVpYnV1a3p1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MTI0NDQsImV4cCI6MjA2ODM4ODQ0NH0.gNgwnNDKgaCZH6aF1Z-Lxs03l-CVK3oIrKigM1zTH2E";
-  
   // For demo purposes - using localStorage instead of Supabase
   const useMockDB = false; // Set to false when you have real Supabase credentials
   
