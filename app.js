@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function showMessage(text, type = "success", timeout = 3000) {
     if (!messageContainer) return;
     const msg = document.createElement("div");
-    msg.className = message ${type};
+    msg.className = `message ${type}`;
     msg.textContent = text;
     msg.style.cssText = `
       position: fixed;
@@ -189,7 +189,7 @@ window.addEventListener("DOMContentLoaded", () => {
       classes = data || [];
     }
     classesGrid.innerHTML = !classes.length
-      ? <div class="empty-state w-full"><div class="empty-state-icon">📚</div><h3>No classes found</h3><p>Create your first class to get started</p></div>
+      ? `<div class="empty-state w-full"><div class="empty-state-icon">📚</div><h3>No classes found</h3><p>Create your first class to get started</p></div>`
       : classes.map(cls => `
       <div class="class-card card cursor-pointer" tabindex="0" data-class-id="${cls.id}">
         <div class="card__body">
@@ -470,12 +470,12 @@ downloadDefaultersBtn.addEventListener("click", () => {
     const day = String(d.getDate()).padStart(2, "0");
     const month = String(d.getMonth() + 1).padStart(2, "0");
     const year = d.getFullYear();
-    return ${day}_${month}_${year};
+    return `${day}_${month}_${year}`;
   }
 
   const lastDateFormatted = prettyDate(lastDateRaw);
   const exportBase = (fileBaseName || "Defaulter_Report").replace(/[\\/:*?"<>|]/g, "_");
-  const fileName = ${exportBase}_Defaulter_list_Till_${lastDateFormatted}.xlsx;
+  const fileName = `${exportBase}_Defaulter_list_Till_${lastDateFormatted}.xlsx`;
 
   const header = ["Roll Number", "Name", "Present Days", "Total Days", "Attendance %", "Status"];
   const data = [header];
@@ -573,7 +573,7 @@ clearAnalysisBtn.addEventListener("click", () => {
         <table class="preview-table w-full">
           <thead><tr><th>Roll Number</th><th>Name</th></tr></thead>
           <tbody>
-            ${newClassData.students.map(s=><tr><td>${s.rollNumber}</td><td>${s.name}</td></tr>).join("")}
+            ${newClassData.students.map(s=>`<tr><td>${s.rollNumber}</td><td>${s.name}</td></tr>`).join("")}
           </tbody>
         </table>`;
   }
@@ -735,7 +735,7 @@ function updateAttendancePreview() {
       );
       
       if (invalidRolls.length > 0) {
-        showMessage(Invalid roll numbers: ${invalidRolls.join(', ')}, "error");
+        showMessage(`Invalid roll numbers: ${invalidRolls.join(', ')}`, "error");
         return;
       }
       
@@ -880,13 +880,13 @@ downloadAttendanceBtn.addEventListener("click", () => {
     const day = String(d.getDate()).padStart(2, "0");
     const month = String(d.getMonth() + 1).padStart(2, "0");
     const year = d.getFullYear();
-    return ${day}/${month}/${year};
+    return `${day}/${month}/${year}`;
   }
 
   const fileStart = toPrettyDate(dates[0]);
   const fileEnd = toPrettyDate(dates[dates.length - 1]);
   const originalClassName = (currentClass.name || "Attendance").replace(/[\\/:*?"<>|]/g, "_");
-  const fileName =${originalClassName}_${fileStart}-${fileEnd}.xlsx;
+  const fileName =`${originalClassName}_${fileStart}-${fileEnd}.xlsx`;
 
   const header = ["Roll Number", "Name", ...dates];
   const data = [header];
