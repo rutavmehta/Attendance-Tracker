@@ -843,7 +843,7 @@ function renderAttendanceHistory() {
               const dayAttendance = currentClass.attendance[date];
               const absentees = Object.entries(dayAttendance)
                 .filter(([roll, status]) => status === 'absent')
-                .map(([roll]) => roll);
+                .map(([roll]) => name);
               return `
                 <tr>
                   <td>${new Date(date).toLocaleDateString()}</td>
