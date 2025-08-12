@@ -823,42 +823,43 @@ function renderAttendanceHistory() {
   }
 
   // Create minimal attendance history table
-  historyContent.innerHTML = `
-    <div class="history-summary">
-      <h3>Attendance History for ${currentClass.name}</h3>
-      <p>Total sessions recorded: ${dates.length}</p>
-    </div>
-    <div class="history-table-container">
-      <table class="attendance-history-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Number of Absentees</th>
-            <th>Absent Roll Numbers</th>
-          </tr>
-        </thead>
-        <tbody>
-         <tbody>
-  ${
-    dates.map(date => {
-      const dayAttendance = currentClass.attendance[date];
-      // Get names of absentees, not roll numbers
-      const absentees = Object.entries(dayAttendance)
-        .filter(([roll, status]) => status === 'absent')
-        .map(([roll]) => {
-          const student = currentClass.students.find(s => s.rollNumber === roll);
-          return student ? student.name : roll;
-        });
-      return `
+historyContent.innerHTML = `
+  <div class="history-summary">
+    <h3>Attendance History for ${currentClass.name}</h3>
+    <p>Total sessions recorded: ${dates.length}</p>
+  </div>
+  <div class="history-table-container">
+    <table class="attendance-history-table">
+      <thead>
         <tr>
-          <td>${new Date(date).toLocaleDateString()}</td>
-          <td class="absent-count">${absentees.length}</td>
-          <td class="absent-rolls-list">${absentees.join(', ') || '-'}</td>
+          <th>Date</th>
+          <th>Number of Absentees</th>
+          <th>Absent Names</th>
         </tr>
-      `;
-    }).join("")
-  }
-</tbody>
+      </thead>
+      <tbody>
+        ${dates.map(date => {
+          const dayAttendance = currentClass.attendance[date];
+          // Get names of absentees, not roll numbers
+          const absentees = Object.entries(dayAttendance)
+            .filter(([roll, status]) => status === 'absent')
+            .map(([roll]) => {
+              const student = currentClass.students.find(s => s.rollNumber === roll);
+              return student ? student.name : roll;
+            });
+          return `
+            <tr>
+              <td>${new Date(date).toLocaleDateString()}</td>
+              <td class="absent-count">${absentees.length}</td>
+              <td class="absent-rolls-list">${absentees.join(', ') || '-'}</td>
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+  </div>
+`;
+
 
 
     
