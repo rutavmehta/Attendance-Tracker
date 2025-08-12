@@ -838,26 +838,28 @@ function renderAttendanceHistory() {
           </tr>
         </thead>
         <tbody>
-          ${
-            dates.map(date => {
-              const dayAttendance = currentClass.attendance[date];
-              const absentees = Object.entries(dayAttendance)
-                .filter(([roll, status]) => status === 'absent')
-                .map(([roll]) => name);
-              return `
-                <tr>
-                  <td>${new Date(date).toLocaleDateString()}</td>
-                  <td class="absent-count">${absentees.length}</td>
-                  <td class="absent-rolls-list">${absentees.join(', ') || '-'}</td>
-                </tr>
-              `;
-            }).join("")
-          }
-        </tbody>
-      </table>
-    </div>
-  `;
-}
+         <tbody>
+  ${
+    dates.map(date => {
+      const dayAttendance = currentClass.attendance[date];
+      // Get names of absentees, not roll numbers
+      const absentees = Object.entries(dayAttendance)
+        .filter(([roll, status]) => status === 'absent')
+        .map(([roll]) => {
+          const student = currentClass.students.find(s => s.rollNumber === roll);
+          return student ? student.name : roll;
+        });
+      return `
+        <tr>
+          <td>${new Date(date).toLocaleDateString()}</td>
+          <td class="absent-count">${absentees.length}</td>
+          <td class="absent-rolls-list">${absentees.join(', ') || '-'}</td>
+        </tr>
+      `;
+    }).join("")
+  }
+</tbody>
+
 
     
   // ... (your code remains unchanged above this point)
